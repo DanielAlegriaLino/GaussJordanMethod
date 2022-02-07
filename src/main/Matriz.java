@@ -1,8 +1,15 @@
 package main;
 
-public class MetodoGaussJordan {
+public class Matriz {
 	
-	static void imprimirMatriz(double matriz[][])
+	double[][] matriz;
+	
+	public Matriz(double[][] a_matriz)
+	{
+		this.matriz = a_matriz;
+	}
+	
+	public void imprimirMatriz()
 	{
 		System.out.println();
 	    for (int y = 0; y < matriz.length; y++)
@@ -14,9 +21,7 @@ public class MetodoGaussJordan {
 	    System.out.println();
 	}
 	
-	public static void obtenerMatrizEscalonada(double[][] matriz) 
-
-	
+	public void getMatrizEscalonada() 
 	{
 		int numero_incognitas= matriz[0].length-1;
 		
@@ -59,13 +64,14 @@ public class MetodoGaussJordan {
 
 	}
 
-	public static void imprimirResultadoDeMatrizEscalonada(double[][] matriz) 
+	public void getResultadosDeMatrizEscalonadaSimplificados() 
 	{
 		int numero_incognitas= matriz[0].length-1;
 		
 		for( int i= 0; i<numero_incognitas; i++ ) 
 		{
-			System.out.println( matriz[i][numero_incognitas]/matriz[i][i]);
+			matriz[i][numero_incognitas]= matriz[i][numero_incognitas]/matriz[i][i];
+			matriz[i][i]= 1;
 		}
 		
 	}
