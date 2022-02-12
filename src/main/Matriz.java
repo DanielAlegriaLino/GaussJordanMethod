@@ -2,7 +2,7 @@ package main;
 
 public class Matriz {
 	
-	double[][] matriz;
+	private double[][] matriz;
 	
 	public Matriz(double[][] a_matriz)
 	{
@@ -15,18 +15,24 @@ public class Matriz {
 	    for (int y = 0; y < matriz.length; y++)
 	    {
 	        for (int x = 0; x < matriz[0].length; x++)
+	        	if(matriz[y][x]<0.0000001 && matriz[y][x]> -0.0000001) 
+	        	{
+	        		System.out.print("0" + " ");
+	        	}else {
 	            System.out.print(matriz[y][x] + " ");
+	        	}
 	        System.out.println();
 	    }
 	    System.out.println();
 	}
 	
-	public void getMatrizEscalonada() 
+	private void getMatrizEscalonada() 
 	{
 		int numero_incognitas= matriz[0].length-1;
 		
 		for(int x = 0 ; x < numero_incognitas; x++  ) 
 		{
+			// Cada columna
 			if(matriz[x][x]== 0) 
 			{
 				int seq_search = 1;
@@ -64,7 +70,7 @@ public class Matriz {
 
 	}
 
-	public void getResultadosDeMatrizEscalonadaSimplificados() 
+	private void getResultadosDeMatrizEscalonadaSimplificados() 
 	{
 		int numero_incognitas= matriz[0].length-1;
 		
@@ -76,6 +82,11 @@ public class Matriz {
 		
 	}
 	
+	public void resolverMatriz() 
+	{
+		this.getMatrizEscalonada();
+		this.getResultadosDeMatrizEscalonadaSimplificados();
+	}
 	
 	
 }
